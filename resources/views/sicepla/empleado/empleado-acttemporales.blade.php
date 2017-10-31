@@ -33,7 +33,8 @@
                         <th class="text-center">Hora</th>
                         <th class="text-center">Observación</th>
                         <th class="text-center">Subir Archivo</th>
-                        <th class="text-center">Ver</th>
+                        <th class="text-center">Ver Archivo</th>
+                        <th class="text-center">Ver Formato</th>
                     </thead>
                     <tbody>
                         @foreach($jefes as $jefe)
@@ -73,7 +74,8 @@
                             <span class="label label-success"> x <span>
                             @endif
                             </td>
-                            <td><a href="Jefe/Archivos\{{$jefe->url_plazo}}" target="_blank"><button type="button" class="btn btn-info" title="Visualizar"><i class="fa fa-eye"></i></button></a></td>
+                            <td><a href="Jefe/Archivos\{{$jefe->url_plazo}}" target="_blank"><button type="button" class="btn btn-info" title="Visualizar"><i class="fa fa-star"></i></button></a></td>
+                            <td><a href="Ayudante/Formatos\{{$jefe->url}}" target="_blank"><button type="button" class="btn btn-info" title="Visualizar"><i class="fa fa-eye"></i></button></a></td>
                         </tr>
                         @endforeach
                     </tbody>
