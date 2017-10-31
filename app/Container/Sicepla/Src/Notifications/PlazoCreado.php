@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class PlazoTemporalCreado extends Notification
+class PlazoCreado extends Notification
 {
     use Queueable;
 
@@ -16,9 +16,9 @@ class PlazoTemporalCreado extends Notification
      *
      * @return void
      */
-    public function __construct($nombre)
+    public function __construct($request)
     {
-        $this->nombre=$nombre;
+        $this->request=$request;
     }
 
     /**
@@ -41,10 +41,10 @@ class PlazoTemporalCreado extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->subject('Has sido creada un Plazo temporal en plataforma Sicepla')
-        ->markdown('mail.plazoTemporal-creado', [
+        ->subject('Has sido creada un Plazo en plataforma Sicepla')
+        ->markdown('mail.plazo-creado', [
           'user' => $notifiable,
-          'nombre' => $this->nombre,
+          'plazo' => $this->request,
         ]);
     }
 
