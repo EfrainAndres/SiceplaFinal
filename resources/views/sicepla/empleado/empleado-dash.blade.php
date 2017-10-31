@@ -1,6 +1,6 @@
 @component('components.nav-link', [
     'icon' => 'fa fa-object-group',
-    'title' => 'Dependencias',
+    'title' => 'Plazos',
     'link' => route('jefedepto.index')
 ])
 @endcomponent

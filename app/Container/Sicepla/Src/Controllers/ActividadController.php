@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Container\Sicepla\Src\Departamento;
 use App\Container\Sicepla\Src\Actividad;
+use App\Container\Sicepla\Src\Notifications\PlazoCreado;
+use Illuminate\Support\Facades\Notification;
 
 class ActividadController extends Controller
 {
@@ -42,7 +44,9 @@ class ActividadController extends Controller
     public function store(Departamento $departamento, Request $request)
     {
        // dump($request['tipoDia']);
-        Actividad::create([
+       $plazo = new Actividad;
+       $plazo::create([
+        //Actividad::create([
             'nombre' => $request['nombre'],
             'observacion' => $request['observacion'],
             'tipo_entrega' => $request['tipoEntrega'],
@@ -52,8 +56,13 @@ class ActividadController extends Controller
             'hora' => $request['horaD'],
             'FK_DepartamentoId' => $departamento->id ,
         ]);
+        $dependencia = new Departamento;
+        $dependencia = $dependencia->find($departamento->id);
+        $dependencia = $dependencia->usuario()->get();
         
+        Notification::send($dependencia, new PlazoCreado($request));
         return redirect('/departamentos')->with('success','Plazo Creado Correctamente');
+        return $dependencia;
     }
 
     /**

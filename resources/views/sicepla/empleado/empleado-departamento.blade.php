@@ -18,7 +18,7 @@
 @include('sicepla.alerts.error')
 @include('sicepla.alerts.errors')
 {{--Fin Mensaje Confirmar--}}
-    @component('components.portlet', ['icon' => 'fa fa-object-group', 'title' => 'Dependencia'])
+    @component('components.portlet', ['icon' => 'fa fa-object-group', 'title' => 'Plazos'])
         <div id="app">            
             {{--inicio tabla--}}
             <div class="table-responsive">
