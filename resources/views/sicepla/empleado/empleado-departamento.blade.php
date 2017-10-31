@@ -61,7 +61,7 @@
                             @endif
                             <td>{{$jefe->observacion}}</td>
                             <td>
-                            @if($jefe->fecha  >= \Carbon\Carbon::now() || $jefe->hora  >= \Carbon\Carbon::now())
+                            @if($jefe->fecha  >= \Carbon\Carbon::now() || $jefe->hora  >= \Carbon\Carbon::now() || $jefe->tipo_entrega === "Semanal" || $jefe->tipo_entrega === "Mensual")
                             {{link_to_route('jefedepto.edit', $title = '',$parameter = $jefe->id , $attributes = ['class' => 'btn btn-simple btn-warning btn-icon edit icon-pencil'])}}
                             @else
                             <span class="label label-success"> x <span>
